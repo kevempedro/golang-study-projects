@@ -1,0 +1,6 @@
+go mod init 'nome'
+go run
+go build
+./modulo
+go tidy - Retira os modulos externos que não estão sendo usados
+got get 'nome-do-pacote'

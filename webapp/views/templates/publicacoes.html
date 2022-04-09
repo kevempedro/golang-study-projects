@@ -1,0 +1,46 @@
+{{ define "curtidas" }}
+    <i class="fas fa-heart curtir-publicacao" style="cursor: pointer;"></i>
+    <span>{{ .Curtidas }}</span>
+{{ end }}
+
+{{ define "editar" }}
+    <a href="publicacoes/{{ .Id }}/atualizar" style="text-decoration: none;">
+        <i class="fas fa-edit"></i>
+    </a>
+{{ end }}
+
+{{ define "deletar" }}
+    <i class="fas fa-trash text-danger deletar-publicacao" style="cursor: pointer;"></i>
+{{ end }}
+
+{{ define "cabecalho-publicacao" }}
+    <h5 class="card-title">{{ .Titulo }}</h5>
+
+    <p class="card-text">{{ .Conteudo }}</p>
+
+    <a href="/usuarios/{{ .AutorId }}"> {{ .AutorNick }} - {{ .CriadaEm.Format "02/01/2006" }}</a>
+{{ end }}
+
+{{ define "publicacao-com-permissao" }}
+    <div class="card mb-4">
+        <div class="card-body" data-publicacao-id="{{ .Id }}">
+            {{ template "cabecalho-publicacao" . }}
+
+            <p class="mt-3">
+                {{ template "curtidas" . }}
+                {{ template "editar" . }}
+                {{ template "deletar" . }}
+            </p>
+        </div>
+    </div>
+{{ end }}
+
+{{ define "publicacao-sem-permissao" }}
+    <div class="card mb-4">
+        <div class="card-body" data-publicacao-id="{{ .Id }}">
+            {{ template "cabecalho-publicacao" . }}
+
+            <p class="mt-3">{{ template "curtidas" . }}</p>
+        </div>
+    </div>
+{{ end }}
