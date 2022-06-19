@@ -42,4 +42,6 @@ func main() {
 		fmt.Println("Execuntando infinitamente")
 		time.Sleep(time.Second)
 	}
+
+	fmt.Println("Execuntando infinitamente")
 }
